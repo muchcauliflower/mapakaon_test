@@ -1,0 +1,43 @@
+Firestore Database Structure (Datatypes)
+
+CHAINS collection
+chains (Collection)
+  |
+  ├── chainID: string      // Unique identifier for the chain (e.g., "1")
+  ├── chainName: string    // Name of the chain (e.g., "McDonald's")
+  ├── description: string // Description of the chain (e.g., "Fast food restaurant chain")
+  ├── address: string      // Address of the chain's headquarters (e.g., "100 FastFood Blvd")
+  ├── latitude: number     // Latitude for the chain's headquarters (e.g., 40.730610)
+  ├── longitude: number    // Longitude for the chain's headquarters (e.g., -73.935242)
+  ├── phone: string        // Phone number for the chain (e.g., "+1 800 123 456")
+  ├── website: string      // Website for the chain (e.g., "https://www.mcdonalds.com")
+
+
+menuTemplates (Collection)
+  |
+  ├── menuID: string       // Unique identifier for the menu (e.g., "1")
+  ├── menuName: string     // Name of the menu (e.g., "McDonald's Menu")
+  ├── menuItems: array     // Array of menu items, each item is an object containing:
+  |     |
+  |     ├── itemID: string // Unique identifier for the item (e.g., "1")
+  |     ├── name: string   // Name of the menu item (e.g., "Big Mac")
+  |     ├── price: number  // Price of the menu item (e.g., 5.99)
+  |     └── description: string (optional) // Description of the menu item (e.g., "A classic burger")
+
+places (Collection)
+  |
+  ├── placeID: string      // Unique identifier for the place (e.g., "1")
+  ├── placeName: string    // Name of the place (e.g., "McDonald's - Downtown")
+  ├── description: string // Description of the place (e.g., "Fast food restaurant")
+  ├── address: string      // Address of the place (e.g., "456 Downtown St")
+  └── placeImage: string     // Picture to display for the place
+  ├── latitude: number     // Latitude of the place (e.g., 40.730610)
+  ├── longitude: number    // Longitude of the place (e.g., -73.935242)
+  ├── chainID: string|null // Chain reference ID (e.g., "1" or null if not chained)
+  ├── menuTemplateID: string|null // Reference to a shared menu template (e.g., "1" or null if not chained)
+  └── menuItems: array     // Array of menu items (for non-chained places only)
+         |
+         ├── itemID: string  // Unique identifier for the item (e.g., "1")
+         ├── name: string    // Name of the menu item (e.g., "Margherita Pizza")
+         ├── price: number   // Price of the menu item (e.g., 8.99)
+         └── description: string (optional) // Description of the menu item (e.g., "A classic pizza")
